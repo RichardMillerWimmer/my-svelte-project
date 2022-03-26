@@ -3,12 +3,27 @@
   let lastName = "Miller Wimmer";
   let color = "blue";
   let showText = false;
+  let users = [
+    {
+      id: 1,
+      name: "John",
+    },
+    {
+      id: 2,
+      name: "Joe",
+    },
+    {
+      id: 3,
+      name: "Jane",
+    },
+  ];
 
   $: name = `${firstName} ${lastName}`;
 
   const toggleColor = () => {
     color = color === "blue" ? "purple" : "blue";
     showText = !showText;
+    users = [...users, { id: 4, name: "James" }];
   };
 </script>
 
@@ -23,6 +38,9 @@
     <p>showText is false and this it the : else</p>
   {/if}
   <button on:click={toggleColor}>color change</button>
+  {#each users as user (user.id)}
+    <h3>{user.id}: {user.name}</h3>
+  {/each}
 </main>
 
 <style>
