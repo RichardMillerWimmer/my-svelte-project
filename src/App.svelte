@@ -8,8 +8,8 @@
   ];
 </script>
 
-<main>
-  <FeedbackList feedback={feedback} />
+<main class="container">
+  <FeedbackList {feedback} />
 </main>
 
 <style>
