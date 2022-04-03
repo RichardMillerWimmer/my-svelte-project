@@ -9,6 +9,7 @@
 
   const deleteFeebackItem = (event) => {
     console.log(event.detail);
+    feedback = feedback.filter((item) => item.id !== event.detail);
   };
 </script>
 
