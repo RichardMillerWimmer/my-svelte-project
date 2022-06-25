@@ -2,6 +2,7 @@
   import Button from "./Button.svelte";
   import Card from "./Card.svelte";
   import RatingSelector from "./RatingSelector.svelte";
+  import { v4 as uuidv4 } from "uuid";
 
   let text = "";
   let btnDisable = true;
@@ -17,14 +18,26 @@
       btnDisable = false;
     }
   };
-  const handleSelect = (event) => {rating = event.detail};
+  const handleSelect = (event) => {
+    rating = event.detail;
+  };
+  const handleSubmit = () => {
+    if (text.trim().length > 10) {
+      const newFeedback = {
+        id: uuidv4(),
+        text,
+        rating: +rating,
+      };
+      console.log(newFeedback);
+    }
+  };
 </script>
 
 <Card>
   <header>
     <h2>How would you rate us?</h2>
   </header>
-  <form>
+  <form on:submit|preventDefault={handleSubmit}>
     <RatingSelector on:rating-select={handleSelect} />
     <div class="input-group">
       <input
