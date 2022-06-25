@@ -1,13 +1,29 @@
 <script>
+  import Button from "./Button.svelte";
+  import Card from "./Card.svelte";
+
+  let text = "";
+  let btnDisable = true;
+
+  const handleInput = () => {
+    
+  }
 </script>
 
-<form action="">
-  <!-- rating -->
-  <div class="input-group">
-    <input type="text" placeholder="Review Us!" />
-    <button>Submit</button>
-  </div>
-</form>
+<Card>
+  <form action="">
+    <!-- rating -->
+    <div class="input-group">
+      <input
+        type="text"
+        on:input={handleInput}
+        bind:value={text}
+        placeholder="Review Us!"
+      />
+      <Button disabled={btnDisable} type="submit">Submit</Button>
+    </div>
+  </form>
+</Card>
 
 <style>
   header {
