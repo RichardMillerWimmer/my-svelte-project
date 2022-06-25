@@ -4,13 +4,23 @@
 
   let text = "";
   let btnDisable = true;
+  let message = "";
 
   const handleInput = () => {
-    
-  }
+    if (text.trim().length <= 10) {
+      message = `Review must be longer than ten characters.`;
+      btnDisable = true;
+    } else {
+      message = "";
+      btnDisable = false;
+    }
+  };
 </script>
 
 <Card>
+  <header>
+    <h2>How would you rate us?</h2>
+  </header>
   <form action="">
     <!-- rating -->
     <div class="input-group">
@@ -22,6 +32,9 @@
       />
       <Button disabled={btnDisable} type="submit">Submit</Button>
     </div>
+    {#if message}
+      <div class="message">{message}</div>
+    {/if}
   </form>
 </Card>
 
