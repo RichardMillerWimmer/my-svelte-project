@@ -1,10 +1,12 @@
 <script>
   import Button from "./Button.svelte";
   import Card from "./Card.svelte";
+  import RatingSelector from "./RatingSelector.svelte";
 
   let text = "";
   let btnDisable = true;
   let message = "";
+  let rating = 10;
 
   const handleInput = () => {
     if (text.trim().length <= 10) {
@@ -24,6 +26,7 @@
   <form action="">
     <!-- rating -->
     <div class="input-group">
+      <RatingSelector />
       <input
         type="text"
         on:input={handleInput}
