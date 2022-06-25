@@ -17,16 +17,16 @@
       btnDisable = false;
     }
   };
+  const handleSelect = (event) => {rating = event.detail};
 </script>
 
 <Card>
   <header>
     <h2>How would you rate us?</h2>
   </header>
-  <form action="">
-    <!-- rating -->
+  <form>
+    <RatingSelector on:rating-select={handleSelect} />
     <div class="input-group">
-      <RatingSelector />
       <input
         type="text"
         on:input={handleInput}
