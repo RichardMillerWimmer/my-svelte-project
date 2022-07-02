@@ -1,8 +1,11 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import Button from "./Button.svelte";
   import Card from "./Card.svelte";
   import RatingSelector from "./RatingSelector.svelte";
   import { v4 as uuidv4 } from "uuid";
+
+  const dispatch = createEventDispatcher();
 
   let text = "";
   let btnDisable = true;
@@ -28,7 +31,9 @@
         text,
         rating: +rating,
       };
-      console.log(newFeedback);
+      dispatch("send-feedback", newFeedback);
+      rating = 10;
+      text = "";
     }
   };
 </script>

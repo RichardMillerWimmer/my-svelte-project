@@ -15,6 +15,11 @@
   $: average = averageFull.toFixed(2);
   $: count = feedback.length;
 
+  const addFeedback = (event) => {
+    const newFeedback = event.detail;
+    feedback = [newFeedback, ...feedback];
+  };
+
   const deleteFeebackItem = (event) => {
     console.log(event.detail);
     feedback = feedback.filter((item) => item.id !== event.detail);
@@ -22,7 +27,7 @@
 </script>
 
 <main class="container">
-  <FeedbackForm />
+  <FeedbackForm on:send-feedback={addFeedback} />
   <FeedbackStats {count} {average} />
   <FeedbackList {feedback} on:delete-feedback-item={deleteFeebackItem} />
 </main>
