@@ -1,14 +1,7 @@
 <script>
   import FeedbackList from "./components/FeedbackList.svelte";
   import FeedbackStats from "./components/FeedbackStats.svelte";
-  import FeebackForm from "./components/FeedbackForm.svelte";
   import FeedbackForm from "./components/FeedbackForm.svelte";
-
-  let feedback = [
-    { id: 1, rating: 10, text: "some rating text lorem ipsum" },
-    { id: 2, rating: 9, text: "some rating text lorem ipsum" },
-    { id: 3, rating: 7, text: "some rating text lorem ipsum" },
-  ];
 
   $: averageFull =
     feedback.reduce((acc, { rating }) => acc + rating, 0) / feedback.length;
@@ -29,7 +22,7 @@
 <main class="container">
   <FeedbackForm on:send-feedback={addFeedback} />
   <FeedbackStats {count} {average} />
-  <FeedbackList {feedback} on:delete-feedback-item={deleteFeebackItem} />
+  <FeedbackList on:delete-feedback-item={deleteFeebackItem} />
 </main>
 
 <style>
