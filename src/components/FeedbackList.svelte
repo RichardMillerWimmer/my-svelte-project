@@ -12,11 +12,14 @@
 
   // onMount(() => console.log("onMount"));
   // onDestroy(() => unsubscribe());
+
+  // Event forwarder Removed
+  // on:delete-feedback-item
 </script>
 
 Feedback List
 {#each $FeedbackStore as fb (fb.id)}
   <div in:scale out:fade={{ duration: 500 }}>
-    <FeedbackItem item={fb} on:delete-feedback-item />
+    <FeedbackItem item={fb} />
   </div>
 {/each}
